@@ -13,10 +13,7 @@ pipeline {
             steps{
                
                        sh "sed -i -e \"s#IMAGE_NAME#${registry}#g\" .releaserc"
-                       sh "sed -i -e \"s#Dockerfile#${DockerfilePath}#g\" .releaserc"
-                       sh "sed -i -e \"s#COMMIT_ID#${GIT_COMMIT}#g\" basic-structure/src/app/routes/version.json"
-                       sh "sed -i -e \"s#BUILD_DATE#`date`#g\" basic-structure/src/app/routes/version.json"
-                       sh "sed -i -e \"s#BRANCH#${GIT_BRANCH}#g\" basic-structure/src/app/routes/version.json"
+                       sh "sed -i -e \"s#Dockerfile#${DockerfilePath}#g\" .releaserc
                        sh " cat .releaserc"
                        sh "/usr/bin/semantic-release --no-ci --debug"
                        sh "export `cat version`"
