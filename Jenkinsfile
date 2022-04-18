@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('sementic-release') {
             steps{
-               {
+               
                        sh "sed -i -e \"s#IMAGE_NAME#${registry}#g\" .releaserc"
                        sh "sed -i -e \"s#Dockerfile#${DockerfilePath}#g\" .releaserc"
                        sh "sed -i -e \"s#COMMIT_ID#${GIT_COMMIT}#g\" basic-structure/src/app/routes/version.json"
@@ -20,7 +20,7 @@ pipeline {
                        sh " cat .releaserc"
                        sh "/usr/bin/semantic-release --no-ci --debug"
                        sh "export `cat version`"
-                }
+                
             }
         }
         stage('Remove Unused Dockerimage') {
