@@ -1,0 +1,17 @@
+{
+    "branches": ['+([0-9])?(.{+([0-9]),x}).x', 'master', {name: 'develop', prerelease: true}],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "@semantic-release/changelog",
+         ["@semantic-release/exec", {
+            "prepareCmd": "sed -i -e \"s#VERSION#${nextRelease.version}#g\" basic-structure/src/app/routes/version.json && docker build -t IMAGE_NAME -f Dockerfile .",
+            "publishCmd": "echo SEM_VERSION=${nextRelease.version} > version",            
+    }],
+    ["semantic-release-docker", {
+       "name": "IMAGE_NAME"
+       }
+    ],
+        "@semantic-release/git",
+    ],
+     
