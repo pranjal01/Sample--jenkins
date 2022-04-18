@@ -15,6 +15,9 @@ pipeline {
                        sh "sed -i -e \"s#IMAGE_NAME#${registry}#g\" .releaserc"
                        sh "sed -i -e \"s#Dockerfile#${DockerfilePath}#g\" .releaserc"
                        sh " cat .releaserc"
+                       sh "/usr/bin/semantic-release --no-ci --debug"
+                       sh "export `cat version`"
+
                 
             }
         }
