@@ -3,7 +3,7 @@ pipeline {
 
     environment{
         registry = "pranjal01/demo-helm-chart"
-        registryCredential = "local-docker"
+        registryCredential = "Pranjal_dockerhub"
         dockerImage = ''
         DockerfilePath = "Dockerfile"
               
