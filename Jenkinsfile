@@ -11,12 +11,7 @@ pipeline {
     stages {
         stage('sementic-release') {
             steps{
-                withCredentials(
-                        [   usernamePassword(credentialsId: 'local-docker', 
-                            passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME'), 
-                            usernameColonPassword(credentialsId: 'gitlab_cred', variable: 'GIT_CREDENTIALS'),
-                        ]
-                    ) {
+               {
                        sh "sed -i -e \"s#IMAGE_NAME#${registry}#g\" .releaserc"
                        sh "sed -i -e \"s#Dockerfile#${DockerfilePath}#g\" .releaserc"
                        sh "sed -i -e \"s#COMMIT_ID#${GIT_COMMIT}#g\" basic-structure/src/app/routes/version.json"
