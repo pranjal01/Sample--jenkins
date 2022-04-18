@@ -1,0 +1,40 @@
+#Name
+name: sample
+
+#Replica
+replicaCount: 1
+
+#Images
+image:
+  repository: pranjal01/demo-helm-chart
+  tag: a----------------------------9
+  pullPolicy: IfNotPresent
+
+#ImageSecrets:
+imagePullSecrets:
+        - name: registrypullsecret
+
+#PodsSecurityContext
+securityContext:
+  privileged: false
+
+
+#ServiceType
+service:
+  name: sample
+  port: 3000
+  Servicetype: ClusterIP
+  targetPort: 3000
+
+
+#Resources
+
+Resources:
+  enabled: false
+  resources:
+    requests:
+      cpu: 512m
+    limits:
+      cpu: 512m
+
+
