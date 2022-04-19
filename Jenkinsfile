@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Kubernetes Deploy') {
             steps{
-                sh 'export `cat version` && helm --kubeconfig=config upgrade -i sample-helm -$BRANCH_NAME -n $namespace Sample-jenkins/sample-helm-$BRANCH_NAME --set image.tag=${SEM_VERSION}'
+                sh 'export `cat version` && helm --kubeconfig=config upgrade -i sample-helm -$BRANCH_NAME -n $namespace sample-helm-$BRANCH_NAME --set image.tag=${SEM_VERSION}'
             }
         }
 
